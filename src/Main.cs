@@ -18,7 +18,7 @@ namespace AudicaModding
             public const string Name = "FollowCamera";
             public const string Author = "Continuum";
             public const string Company = null;
-            public const string Version = "0.1.0";
+            public const string Version = "1.2.0";
             public const string DownloadLink = null;
         }
 
@@ -96,20 +96,20 @@ namespace AudicaModding
             yield return new WaitForSeconds(.5f);
             CheckCamera();
             if (!camOK) yield break;
-            MelonModLogger.Log("Checking done.");
+            //MelonLogger.Log("Checking done.");
 
-                MelonModLogger.Log("disabling preview stuff");
+            //MelonLogger.Log("disabling preview stuff");
                 spectatorCam.previewCam.gameObject.SetActive(false);
                 spectatorCam.previewCamDisplay.SetActive(false);
 
-                MelonModLogger.Log("checking fov");
+            //MelonLogger.Log("checking fov");
                 //fov = PlayerPreferences.I.SpectatorCamFOV;
                 fov = spectatorCam.mFov;
                 if (fov != oldFov)
                 {
-                    //if (oldFov != 0f)
-                    //{
-                        MelonModLogger.Log("updating fov");
+                //if (oldFov != 0f)
+                //{
+                //MelonLogger.Log("updating fov");
                         spectatorCam.UpdateFOV();
                    // }
                     oldFov = fov;
@@ -153,7 +153,6 @@ namespace AudicaModding
         public override void OnApplicationStart()
         {
             HarmonyInstance instance = HarmonyInstance.Create("AudicaMod");
-            Hooks.ApplyHooks(instance);
             LoadConfig();
         }
 
